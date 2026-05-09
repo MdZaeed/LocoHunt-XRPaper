@@ -24,6 +24,7 @@
 \usepackage{cite}
 \usepackage{tabu}
 \usepackage{booktabs}
+\usepackage{dblfloatfix}
 
 \onlineid{0}
 \vgtccategory{Research}
@@ -32,9 +33,9 @@
 \title{LocoHunt: An Exploratory Study of Locomotion Technique and Goal-Directed Spatial Search Behavior in Virtual Reality}
 
 \author{Mahfujur Rahman\thanks{e-mail: \texttt{mahfujur@txstate.edu}}\\ %
-        \scriptsize Texas State University %
+        \scriptsize Department of Computer Science, Texas State University %
 \and Mohammad Zaeed\thanks{e-mail: \texttt{cup7@txstate.edu}}\\ %
-        \scriptsize Texas State University}
+        \scriptsize Department of Computer Science, Texas State University}
 
 \abstract{Continuous joystick locomotion and point-and-teleport are the two dominant locomotion techniques in consumer virtual reality, yet existing comparisons focus on navigation efficiency, cybersickness, and spatial memory rather than on the structure of search itself. We introduce LocoHunt, a coin-collection paradigm in a five-zone virtual museum that elicits goal-directed spatial search without imposing a route, and use it to compare joystick and teleport locomotion in a within-subjects exploratory study with four participants. From 10\,Hz position logs we derive six measures spanning search efficiency and strategy: completion time, spatial coverage, zone visitation completeness, dwell-time entropy, path tortuosity, and revisit rate. Teleport sessions completed roughly 2.5$\times$ faster than joystick sessions, while joystick sessions covered 3.3$\times$ more of the floor area; both differences were statistically significant ($p$\,$<$\,.01) and accompanied by very large effect sizes. Joystick sessions also showed a marginally lower zone-revisit rate. We frame the result as a coverage-versus-cycling tradeoff that is not visible in completion time alone, extending prior work on locomotion-induced spatial behavior into the domain of search and motivating replication at larger sample size.%
 }
@@ -164,7 +165,7 @@ All participants reached all five zones in both conditions ($M$\,=\,5.0 of 5, $S
 \paragraph{Summary of inferential results.}
 \autoref{tab:results} summarizes all six measures. RQ1 (completion time) and RQ2 (spatial coverage) were both answered affirmatively, reaching $p$\,$<$\,.01 with very large effect sizes. RQ6 (revisit rate) showed a large effect size in the predicted direction but did not reach significance under our small sample, leaving it provisionally supported. RQ4 (dwell-time entropy) and RQ5 (path tortuosity) returned null results, and RQ3 (zone visitation) hit ceiling in both conditions. Taken together, the six sub-questions converge on an affirmative answer to the overarching \textbf{RQ}: locomotion technique does reshape goal-directed spatial search behavior, specifically through a coverage-versus-cycling tradeoff---teleport delivers fast, narrow, high-revisit search; joystick delivers slower, broader, lower-revisit search.
 
-\begin{table}[tb]
+\begin{table*}[tb]
   \caption{Descriptive and inferential statistics for the six dependent measures across the four participants. Significance markers: $\ast$ = $p$\,$<$\,.05, $\ast\ast$ = $p$\,$<$\,.01, ns = not significant. Tests selected by Shapiro--Wilk normality check on each condition.}
   \label{tab:results}
   \scriptsize
@@ -181,11 +182,11 @@ All participants reached all five zones in both conditions ($M$\,=\,5.0 of 5, $S
     Zones visited   &   5.0 (0.0)  &   5.0 (0.0)  & ---        & ---       & ---        & ---  \\
     \bottomrule
   \end{tabu}
-\end{table}
+\end{table*}
 
 \begin{figure}[tb]
  \centering
- \includegraphics[width=\columnwidth]{results_bars}
+ \includegraphics[width=\columnwidth]{results_bars_new}
  \caption{Mean values per condition for each of the six dependent measures, with standard deviation bars. Asterisks denote significance: $\ast\ast$\,=\,$p$\,$<$\,.01. Joystick sessions take significantly longer and cover significantly more floor area; teleport sessions show a marginally higher revisit rate (large effect size, $d$\,=\,$-$1.78, $p$\,=\,.10). Dwell-time entropy and path tortuosity did not differ; zone visitation was at ceiling.}
  \label{fig:results}
 \end{figure}
