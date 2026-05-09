@@ -31,10 +31,10 @@
 
 \title{LocoHunt: An Exploratory Study of Locomotion Technique and Goal-Directed Spatial Search Behavior in Virtual Reality}
 
-\author{Mahfujur Rahman\thanks{e-mail: \texttt{first.author@university.edu}}\\ %
-        \scriptsize University Affiliation %
-\and Mohammad Zaeed\thanks{e-mail: \texttt{second.author@university.edu}}\\ %
-        \scriptsize University Affiliation}
+\author{Mahfujur Rahman\thanks{e-mail: \texttt{mahfujur@txstate.edu}}\\ %
+        \scriptsize Texas State University %
+\and Mohammad Zaeed\thanks{e-mail: \texttt{cup7@txstate.edu}}\\ %
+        \scriptsize Texas State University}
 
 \abstract{Continuous joystick locomotion and point-and-teleport are the two dominant locomotion techniques in consumer virtual reality, yet existing comparisons focus on navigation efficiency, cybersickness, and spatial memory rather than on the structure of search itself. We introduce LocoHunt, a coin-collection paradigm in a five-zone virtual museum that elicits goal-directed spatial search without imposing a route, and use it to compare joystick and teleport locomotion in a within-subjects exploratory study with four participants. From 10\,Hz position logs we derive six measures spanning search efficiency and strategy: completion time, spatial coverage, zone visitation completeness, dwell-time entropy, path tortuosity, and revisit rate. Teleport sessions completed roughly 2.5$\times$ faster than joystick sessions, while joystick sessions covered 3.3$\times$ more of the floor area; both differences were statistically significant ($p$\,$<$\,.01) and accompanied by very large effect sizes. Joystick sessions also showed a marginally lower zone-revisit rate. We frame the result as a coverage-versus-cycling tradeoff that is not visible in completion time alone, extending prior work on locomotion-induced spatial behavior into the domain of search and motivating replication at larger sample size.%
 }
@@ -56,6 +56,18 @@ Search is central to a growing class of VR applications: training simulators in 
 Recent work has begun to show that locomotion technique reshapes spatial behavior beyond navigation efficiency. Connolly et al.~\cite{Connolly:2025:LIV} found that teleport users maintained closer interpersonal distance to virtual agents than natural walkers, and explicitly called for further research into locomotion's broader spatial effects. Voeten~\cite{Voeten:2023:LMS} reported a longitudinal divergence in spatial memory between locomotion conditions, with teleport users improving over repeated sessions while joystick users grew increasingly disoriented. Cherep et al.~\cite{Cherep:2020:STV} showed that teleporting impairs subsequent wayfinding, attributing the deficit to interrupted optic flow. None of these works has examined goal-directed search.
 
 We make three contributions. First, we introduce \emph{LocoHunt}, a within-subjects paradigm for measuring spatial search behavior under different locomotion conditions, instrumented with 10\,Hz position logging and a hand-placed coin layout across five spatially separated zones (\autoref{fig:environment}). Second, we define six search-strategy measures that decompose efficiency from coverage, including dwell-time entropy and path tortuosity. Third, we report empirical results from a small-sample exploratory within-subjects study ($N$\,=\,4) showing that point-and-teleport produces faster but less spatially uniform search than continuous joystick locomotion, with implications for the design of search-heavy VR applications.
+
+\paragraph{Research questions.} Guided by these contributions, we organize our investigation around one overarching question and six operationalized sub-questions, each tied directly to one of the six dependent measures:
+
+\begin{description}
+  \item[\textbf{RQ}] Does the choice of VR locomotion technique---continuous joystick translation versus point-and-teleport---reshape the structure of goal-directed spatial search behavior in an immersive virtual environment?
+  \item[\textbf{RQ1}] Does locomotion technique affect how quickly users complete a goal-directed search task in VR? (\emph{completion time})
+  \item[\textbf{RQ2}] Does locomotion technique affect the breadth of physical floor area that users explore during search? (\emph{spatial coverage})
+  \item[\textbf{RQ3}] Does locomotion technique affect whether users access all distinct regions of the search environment, or does it lead them to abandon certain areas entirely? (\emph{zone visitation completeness})
+  \item[\textbf{RQ4}] Does locomotion technique affect how uniformly users distribute their attention and time across the zones of the environment? (\emph{dwell-time entropy})
+  \item[\textbf{RQ5}] Does locomotion technique affect the directness of users' movement paths relative to their net displacement through the environment? (\emph{path tortuosity})
+  \item[\textbf{RQ6}] Does locomotion technique affect how frequently users cycle back to previously visited zones during search? (\emph{revisit rate})
+\end{description}
 
 \begin{figure}[tb]
  \centering
@@ -94,10 +106,10 @@ The session manager activates exactly one locomotion provider per session and di
 \section{Method}
 
 \subsection{Participants}
-We recruited \textbf{four participants} (\emph{Demographic placeholder: report mean age and SD, gender split, and prior-VR-experience distribution.}) from the university population. Participants gave informed consent before the study began and received \emph{[compensation placeholder]} for their time. The study was conducted as a graduate course project; procedures followed standard ethical guidelines for human-subjects research with VR. We frame this as an exploratory study and discuss the implications of the small sample in \autoref{sec:limitations}.
+We recruited \textbf{four participants} (mean age 28.0, $SD$\,=\,0.82; three male, one female) from the university population. Two male participants reported good prior VR experience; the remaining two participants had little to no prior experience with VR headsets. Participants gave informed consent before the study began and took part voluntarily without compensation. The study was conducted as a graduate course project; procedures followed standard ethical guidelines for human-subjects research with VR. We frame this as an exploratory study and discuss the implications of the small sample in \autoref{sec:limitations}.
 
 \subsection{Apparatus and Materials}
-The study was run on a \emph{Meta Quest~3} standalone headset (\emph{[refresh-rate placeholder, e.g.~90\,Hz]}, Touch Plus controllers) running our custom Godot 4.6 build of LocoHunt over OpenXR~1.1.53. The physical setup was a \emph{[room-size placeholder, e.g.~3\,$\times$\,3\,m]} clear area with the Quest's guardian configured for room-scale standing use; participants were tethered only to the controllers. The build is the v7 APK distributed in the project repository.
+The study was run on a \emph{Meta Quest~3} standalone headset (90\,Hz, Touch Plus controllers) running our custom Godot 4.6 build of LocoHunt over OpenXR~1.1.53. The physical setup was a clear area with the Quest's guardian configured for room-scale standing use; participants were tethered only to the controllers. The build is the v7 APK distributed in the project repository.
 
 \subsection{Design}
 A 1-factor within-subjects design was used, with locomotion technique (joystick, teleport) as the single independent variable. Participants were assigned in equal numbers to two technique-order groups: \emph{Group A} performed Session~1 with joystick locomotion and Session~2 with teleport, while \emph{Group B} performed the reverse order. The same coin layout was used in both sessions; we discuss the implications of this design choice in \autoref{sec:limitations}.
@@ -131,26 +143,26 @@ We adopt the conventional thresholds: $|d|$\,$<$\,0.2 negligible, $\geq$\,0.2 sm
 
 \autoref{fig:results} and \autoref{tab:results} summarize the six dependent measures across conditions. Shapiro--Wilk tests indicated that completion time, spatial coverage, and revisit rate met normality in both conditions, so paired t-tests were applied; dwell-time entropy and path tortuosity failed normality on at least one condition, so Wilcoxon signed-rank tests were applied; zones visited was at ceiling in both conditions and was not tested.
 
-\paragraph{Completion time.}
-Teleport sessions were substantially shorter than joystick sessions (joystick: $M$\,=\,689.7\,s, $SD$\,=\,92.0; teleport: $M$\,=\,278.4\,s, $SD$\,=\,64.0). The paired t-test was significant, $t(3)$\,=\,5.89, $p$\,=\,.010, with a very large effect size, $d$\,=\,5.19 ($\ast\ast$). Every participant completed the teleport session faster than the joystick session.
+\paragraph{Completion time (RQ1).}
+Teleport sessions were substantially shorter than joystick sessions (joystick: $M$\,=\,689.7\,s, $SD$\,=\,92.0; teleport: $M$\,=\,278.4\,s, $SD$\,=\,64.0). The paired t-test was significant, $t(3)$\,=\,5.89, $p$\,=\,.010, with a very large effect size, $d$\,=\,5.19 ($\ast\ast$). Every participant completed the teleport session faster than the joystick session. \textbf{RQ1 is answered affirmatively}: locomotion technique has a substantial and statistically significant effect on task completion speed, with teleport enabling search roughly 2.5$\times$ faster than joystick.
 
-\paragraph{Spatial coverage.}
-Joystick sessions covered substantially more floor area than teleport sessions (joystick: $M$\,=\,4.99\,\%, $SD$\,=\,0.71; teleport: $M$\,=\,1.52\,\%, $SD$\,=\,0.60), a 3.3$\times$ ratio. The paired t-test was significant, $t(3)$\,=\,6.14, $p$\,=\,.009, $d$\,=\,5.27 ($\ast\ast$). The pattern reflects the difference between sampling space along a continuous path versus sampling only at discrete landing points.
+\paragraph{Spatial coverage (RQ2).}
+Joystick sessions covered substantially more floor area than teleport sessions (joystick: $M$\,=\,4.99\,\%, $SD$\,=\,0.71; teleport: $M$\,=\,1.52\,\%, $SD$\,=\,0.60), a 3.3$\times$ ratio. The paired t-test was significant, $t(3)$\,=\,6.14, $p$\,=\,.009, $d$\,=\,5.27 ($\ast\ast$). The pattern reflects the difference between sampling space along a continuous path versus sampling only at discrete landing points. \textbf{RQ2 is answered affirmatively}: locomotion technique strongly shapes the spatial breadth of search, with joystick producing coverage more than three times greater than teleport.
 
-\paragraph{Revisit rate.}
-Teleport users revisited previously-seen zones at nearly three times the per-minute rate of joystick users (joystick: $M$\,=\,0.36\,/min, $SD$\,=\,0.11; teleport: $M$\,=\,1.01\,/min, $SD$\,=\,0.50). The paired t-test did not reach significance, $t(3)$\,=\,$-$2.33, $p$\,=\,.102, but the effect size was large, $d$\,=\,$-$1.78 (ns). The pattern is consistent with teleport users moving between zones more frequently rather than completing one zone before moving to the next, and we expect this difference to reach significance with a larger sample.
+\paragraph{Revisit rate (RQ6).}
+Teleport users revisited previously-seen zones at nearly three times the per-minute rate of joystick users (joystick: $M$\,=\,0.36\,/min, $SD$\,=\,0.11; teleport: $M$\,=\,1.01\,/min, $SD$\,=\,0.50). The paired t-test did not reach significance, $t(3)$\,=\,$-$2.33, $p$\,=\,.102, but the effect size was large, $d$\,=\,$-$1.78 (ns). The pattern is consistent with teleport users moving between zones more frequently rather than completing one zone before moving to the next, and we expect this difference to reach significance with a larger sample. \textbf{RQ6 receives suggestive but inconclusive support}: the direction and magnitude of the effect are consistent with teleport promoting zone-cycling behavior, but the small sample precluded significance.
 
-\paragraph{Dwell-time entropy.}
-Normalized dwell-time entropy was near its maximum in both conditions and did not differ meaningfully (joystick: $M$\,=\,0.95, $SD$\,=\,0.03; teleport: $M$\,=\,0.94, $SD$\,=\,0.09; Wilcoxon $W$\,=\,4, $p$\,=\,.875, $d$\,=\,0.23, ns). Both conditions distributed time relatively uniformly across the five zones.
+\paragraph{Dwell-time entropy (RQ4).}
+Normalized dwell-time entropy was near its maximum in both conditions and did not differ meaningfully (joystick: $M$\,=\,0.95, $SD$\,=\,0.03; teleport: $M$\,=\,0.94, $SD$\,=\,0.09; Wilcoxon $W$\,=\,4, $p$\,=\,.875, $d$\,=\,0.23, ns). Both conditions distributed time relatively uniformly across the five zones. \textbf{RQ4 is answered negatively}: locomotion technique does not measurably alter the uniformity of time distribution across zones; both joystick and teleport users spread their dwell time similarly across the entire museum.
 
-\paragraph{Path tortuosity.}
-Path tortuosity, defined as total path length divided by net start-to-end displacement, did not differ between conditions (joystick: $M$\,=\,21.0, $SD$\,=\,14.3; teleport: $M$\,=\,21.1, $SD$\,=\,9.8; Wilcoxon $W$\,=\,5, $p$\,=\,1.00, $d$\,$\approx$\,0, ns).
+\paragraph{Path tortuosity (RQ5).}
+Path tortuosity, defined as total path length divided by net start-to-end displacement, did not differ between conditions (joystick: $M$\,=\,21.0, $SD$\,=\,14.3; teleport: $M$\,=\,21.1, $SD$\,=\,9.8; Wilcoxon $W$\,=\,5, $p$\,=\,1.00, $d$\,$\approx$\,0, ns). \textbf{RQ5 is answered negatively}: locomotion technique does not affect how directly users move relative to their net displacement; both conditions produce equally circuitous paths when measured this way.
 
-\paragraph{Zone visitation completeness.}
-All participants reached all five zones in both conditions ($M$\,=\,5.0 of 5, $SD$\,=\,0). The measure was at ceiling and we retain it only as confirmation that no participant abandoned a region of the environment.
+\paragraph{Zone visitation completeness (RQ3).}
+All participants reached all five zones in both conditions ($M$\,=\,5.0 of 5, $SD$\,=\,0). The measure was at ceiling and we retain it only as confirmation that no participant abandoned a region of the environment. \textbf{RQ3 is answered negatively}: neither locomotion technique caused participants to skip zones; the difference in spatial coverage between conditions arises from within-zone behavior, not from zone-level avoidance.
 
 \paragraph{Summary of inferential results.}
-The two strong findings, completion time and spatial coverage, both reached $p$\,$<$\,.01 with very large effect sizes. The revisit rate showed a large effect size in the predicted direction but did not reach significance under our small sample. Dwell-time entropy and path tortuosity were null. The pattern is best summarized as a coverage-versus-cycling tradeoff: teleport delivers fast, narrow, high-revisit search; joystick delivers slower, broader, lower-revisit search.
+\autoref{tab:results} summarizes all six measures. RQ1 (completion time) and RQ2 (spatial coverage) were both answered affirmatively, reaching $p$\,$<$\,.01 with very large effect sizes. RQ6 (revisit rate) showed a large effect size in the predicted direction but did not reach significance under our small sample, leaving it provisionally supported. RQ4 (dwell-time entropy) and RQ5 (path tortuosity) returned null results, and RQ3 (zone visitation) hit ceiling in both conditions. Taken together, the six sub-questions converge on an affirmative answer to the overarching \textbf{RQ}: locomotion technique does reshape goal-directed spatial search behavior, specifically through a coverage-versus-cycling tradeoff---teleport delivers fast, narrow, high-revisit search; joystick delivers slower, broader, lower-revisit search.
 
 \begin{table}[tb]
   \caption{Descriptive and inferential statistics for the six dependent measures across the four participants. Significance markers: $\ast$ = $p$\,$<$\,.05, $\ast\ast$ = $p$\,$<$\,.01, ns = not significant. Tests selected by Shapiro--Wilk normality check on each condition.}
@@ -186,6 +198,9 @@ The two strong findings, completion time and spatial coverage, both reached $p$\
 \end{figure}
 
 \section{Discussion}
+
+\paragraph{Answers to research questions.}
+Our results provide a clear and internally consistent set of answers to the research questions posed in the introduction. The overarching \textbf{RQ}---whether locomotion technique reshapes the structure of goal-directed spatial search---is answered \emph{yes}, with the nature of the reshaping captured by the individual sub-questions. \textbf{RQ1} is answered affirmatively: teleport locomotion enables task completion roughly 2.5$\times$ faster than joystick, a difference significant at $p$\,=\,.010 with a very large effect size. \textbf{RQ2} is also answered affirmatively: joystick locomotion produces over three times more spatial coverage than teleport ($p$\,=\,.009, $d$\,=\,5.27), reflecting the fundamental difference between continuous path-sweeping and discrete point-landing. \textbf{RQ6} receives provisional support: while the revisit-rate difference did not reach significance ($p$\,=\,.102), the large effect size ($d$\,=\,-1.78) is consistent with teleport promoting zone-cycling rather than zone-exhaustion, and we expect significance to emerge under replication at larger $N$. In contrast, \textbf{RQ3}, \textbf{RQ4}, and \textbf{RQ5} are all answered \emph{no}: both locomotion techniques led participants to visit all five zones, distribute their dwell time uniformly across zones, and move with equivalent path circuitousness. These null results sharpen the interpretation---the difference between the two techniques is not about whether users cover the museum broadly at the zone level, but about how densely they sample space \emph{within} the zones they visit.
 
 The data describe a coherent and asymmetric pattern. Teleport locomotion is significantly faster (a 2.5$\times$ ratio in completion time) and yields significantly less spatial coverage (a 3.3$\times$ ratio); the two effects are mirror images and produce very large standardized effect sizes. The revisit rate showed a large effect size in the predicted direction but fell short of significance at our sample size, consistent with the interpretation that teleport users move between zones more readily than they exhaust each zone in turn. Joystick locomotion is slower but produces broader, lower-revisit coverage. This pattern aligns with the optic-flow account proposed by Cherep et al.~\cite{Cherep:2020:STV} and extends Voeten's~\cite{Voeten:2023:LMS} longitudinal observations into the domain of single-session search behavior: continuous translation preserves the perceptual cues that support continuous spatial updating, while teleport decouples translation from this cognitive process.
 
