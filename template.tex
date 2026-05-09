@@ -1,401 +1,212 @@
-% $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
+\documentclass{vgtc}
 
-\documentclass{vgtc}                          % final (conference style)
-%\documentclass[review]{vgtc}                 % review
-%\documentclass[widereview]{vgtc}             % wide-spaced review
-%\documentclass[preprint]{vgtc}               % preprint
-%\documentclass[electronic]{vgtc}             % electronic version
-
-%% Uncomment one of the lines above depending on where your paper is
-%% in the conference process. ``review'' and ``widereview'' are for review
-%% submission, ``preprint'' is for pre-publication, and the final version
-%% doesn't use a specific qualifier. Further, ``electronic'' includes
-%% hyperreferences for more convenient online viewing.
-
-%% Please use one of the ``review'' options in combination with the
-%% assigned online id (see below) ONLY if your paper uses a double blind
-%% review process. Some conferences, like IEEE Vis and InfoVis, have NOT
-%% in the past.
-
-%% Figures should be in CMYK or Grey scale format, otherwise, colour 
-%% shifting may occur during the printing process.
-
-%% These few lines make a distinction between latex and pdflatex calls and they
-%% bring in essential packages for graphics and font handling.
-%% Note that due to the \DeclareGraphicsExtensions{} call it is no longer necessary
-%% to provide the the path and extension of a graphics file:
-%% \includegraphics{diamondrule} is completely sufficient.
-%%
-\ifpdf%                                % if we use pdflatex
-  \pdfoutput=1\relax                   % create PDFs from pdfLaTeX
-  \pdfcompresslevel=9                  % PDF Compression
-  \pdfoptionpdfminorversion=7          % create PDF 1.7
+\ifpdf%
+  \pdfoutput=1\relax
+  \pdfcompresslevel=9
+  \pdfoptionpdfminorversion=7
   \ExecuteOptions{pdftex}
-  \usepackage{graphicx}                % allow us to embed graphics files
-  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg} % for pdflatex we expect .pdf, .png, or .jpg files
-\else%                                 % else we use pure latex
+  \usepackage{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+\else%
   \ExecuteOptions{dvips}
-  \usepackage{graphicx}                % allow us to embed graphics files
-  \DeclareGraphicsExtensions{.eps}     % for pure latex we expect eps files
+  \usepackage{graphicx}
+  \DeclareGraphicsExtensions{.eps}
 \fi%
 
-%% it is recomended to use ``\autoref{sec:bla}'' instead of ``Fig.~\ref{sec:bla}''
-\graphicspath{{figures/}{pictures/}{images/}{./}} % where to search for the images
+\graphicspath{{figures/}{pictures/}{images/}{./}}
 
-\usepackage{microtype}                 % use micro-typography (slightly more compact, better to read)
-\PassOptionsToPackage{warn}{textcomp}  % to address font issues with \textrightarrow
-\usepackage{textcomp}                  % use better special symbols
-\usepackage{mathptmx}                  % use matching math font
-\usepackage{times}                     % we use Times as the main font
-\renewcommand*\ttdefault{txtt}         % a nicer typewriter font
-\usepackage{cite}                      % needed to automatically sort the references
-\usepackage{tabu}                      % only used for the table example
-\usepackage{booktabs}                  % only used for the table example
-%% We encourage the use of mathptmx for consistent usage of times font
-%% throughout the proceedings. However, if you encounter conflicts
-%% with other math-related packages, you may want to disable it.
+\usepackage{microtype}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage{mathptmx}
+\usepackage{times}
+\renewcommand*\ttdefault{txtt}
+\usepackage{cite}
+\usepackage{tabu}
+\usepackage{booktabs}
 
-
-%% If you are submitting a paper to a conference for review with a double
-%% blind reviewing process, please replace the value ``0'' below with your
-%% OnlineID. Otherwise, you may safely leave it at ``0''.
 \onlineid{0}
-
-%% declare the category of your paper, only shown in review mode
 \vgtccategory{Research}
-
-%% allow for this line if you want the electronic option to work properly
 \vgtcinsertpkg
 
-%% In preprint mode you may define your own headline.
-%\preprinttext{To appear in an IEEE VGTC sponsored conference.}
+\title{LocoHunt: An Exploratory Study of Locomotion Technique and Goal-Directed Spatial Search Behavior in Virtual Reality}
 
-%% Paper title.
+\author{Mahfujur Rahman\thanks{e-mail: \texttt{first.author@university.edu}}\\ %
+        \scriptsize University Affiliation %
+\and Mohammad Zaeed\thanks{e-mail: \texttt{second.author@university.edu}}\\ %
+        \scriptsize University Affiliation}
 
-\title{Global Illumination for Fun and Profit}
-
-%% This is how authors are specified in the conference style
-
-%% Author and Affiliation (single author).
-%%\author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com}}
-%%\affiliation{\scriptsize Allied Widgets Research}
-
-%% Author and Affiliation (multiple authors with single affiliations).
-%%\author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com} %
-%%\and Ed Grimley\thanks{e-mail:ed.grimley@aol.com} %
-%%\and Martha Stewart\thanks{e-mail:martha.stewart@marthastewart.com}}
-%%\affiliation{\scriptsize Martha Stewart Enterprises \\ Microsoft Research}
-
-%% Author and Affiliation (multiple authors with multiple affiliations)
-\author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com}\\ %
-        \scriptsize Starbucks Research %
-\and Ed Grimley\thanks{e-mail:ed.grimley@aol.com}\\ %
-     \scriptsize Grimley Widgets, Inc. %
-\and Martha Stewart\thanks{e-mail:martha.stewart@marthastewart.com}\\ %
-     \parbox{1.4in}{\scriptsize \centering Martha Stewart Enterprises \\ Microsoft Research}}
-
-%% A teaser figure can be included as follows, but is not recommended since
-%% the space is now taken up by a full width abstract.
-%\teaser{
-%  \includegraphics[width=1.5in]{sample.eps}
-%  \caption{Lookit! Lookit!}
-%}
-
-%% Abstract section.
-\abstract{Duis autem vel eum iriure dolor in hendrerit in vulputate
-velit esse molestie consequat, vel illum dolore eu feugiat nulla
-facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
-praesent luptatum zzril delenit augue duis dolore te feugait nulla
-facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem
-vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
-accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-delenit augue duis dolore te feugait nulla facilisi.%
-} % end of abstract
-
-%% ACM Computing Classification System (CCS). 
-%% See <http://www.acm.org/class/1998/> for details.
-%% The ``\CCScat'' command takes four arguments.
-
-\CCScatlist{ 
-  \CCScat{K.6.1}{Management of Computing and Information Systems}%
-{Project and People Management}{Life Cycle};
-  \CCScat{K.7.m}{The Computing Profession}{Miscellaneous}{Ethics}
+\abstract{Continuous joystick locomotion and point-and-teleport are the two dominant locomotion techniques in consumer virtual reality, yet existing comparisons focus on navigation efficiency, cybersickness, and spatial memory rather than on the structure of search itself. We introduce LocoHunt, a coin-collection paradigm in a five-zone virtual museum that elicits goal-directed spatial search without imposing a route, and use it to compare joystick and teleport locomotion in a within-subjects exploratory study with four participants. From 10\,Hz position logs we derive six measures spanning search efficiency and strategy: completion time, spatial coverage, zone visitation completeness, dwell-time entropy, path tortuosity, and revisit rate. Teleport sessions completed roughly 2.5$\times$ faster than joystick sessions, while joystick sessions covered 3.3$\times$ more of the floor area; both differences were statistically significant ($p$\,$<$\,.01) and accompanied by very large effect sizes. Joystick sessions also showed a marginally lower zone-revisit rate. We frame the result as a coverage-versus-cycling tradeoff that is not visible in completion time alone, extending prior work on locomotion-induced spatial behavior into the domain of search and motivating replication at larger sample size.%
 }
 
-%% Copyright space is enabled by default as required by guidelines.
-%% It is disabled by the 'review' option or via the following command:
-% \nocopyrightspace
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%% START OF THE PAPER %%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\CCScatlist{
+  \CCScat{H.5.1}{Information Interfaces and Presentation}{Multimedia Information Systems}{Artificial, Augmented, and Virtual Realities};
+  \CCScat{H.5.2}{Information Interfaces and Presentation}{User Interfaces}{Input Devices and Strategies}
+}
 
 \begin{document}
 
-%% The ``\maketitle'' command must be the first command after the
-%% ``\begin{document}'' command. It prepares and prints the title block.
-
-%% the only exception to this rule is the \firstsection command
 \firstsection{Introduction}
-
 \maketitle
 
-%% \section{Introduction} %for journal use above \firstsection{..} instead
-This template is for papers of VGTC-sponsored conferences which are \emph{\textbf{not}} published in a special issue of TVCG.
+Consumer virtual reality has converged on two dominant locomotion techniques: continuous translation via thumbstick and discrete point-and-teleport. Most empirical comparisons between them ask which technique is faster, more comfortable, or more conducive to presence~\cite{Bozgeyikli:2016:PTL,Coomer:2018:EFL}. A different question---and the one we ask in this paper---is whether the choice of locomotion technique reshapes how users \emph{search} a virtual environment for goals whose locations they cannot see in advance.
 
-\section{Using the Style Template}
+Search is central to a growing class of VR applications: training simulators in which users must locate hazards, virtual museums that depend on visitors discovering exhibits, search-and-rescue scenarios, and a wide range of games. In all of these, fast traversal is not necessarily thorough traversal. If the technique a user moves with biases their distribution of attention across space, application designers need to know.
 
-\begin{itemize}
-\item The style uses the hyperref package, thus turns references into internal links. We thus recommend to make use of the ``\texttt{\textbackslash autoref\{reference\}}'' call (instead of ``\texttt{Figure\~{}\textbackslash ref\{reference\}}'' or similar) since ``\texttt{\textbackslash autoref\{reference\}}'' turns the entire reference into an internal link, not just the number. Examples: \autoref{fig:sample} and \autoref{tab:vis_papers}.
-\item The style automatically looks for image files with the correct extension (eps for regular \LaTeX; pdf, png, and jpg for pdf\LaTeX), in a set of given subfolders (figures/, pictures/, images/). It is thus sufficient to use ``\texttt{\textbackslash includegraphics\{CypressView\}}'' (instead of ``\texttt{\textbackslash includegraphics\{pictures/CypressView.jpg\}}'').
-\item For adding hyperlinks and DOIs to the list of references, you can use ``\texttt{\textbackslash bibliographystyle\{abbrv-doi-hyperref-narrow\}}'' (instead of ``\texttt{\textbackslash bibliographystyle\{abbrv\}}''). It uses the doi and url fields in a bib\TeX\ entry and turns the entire reference into a link, giving priority to the doi. The doi can be entered with or without the ``\texttt{http://dx.doi.org/}'' url part. See the examples in the bib\TeX\ file and the bibliography at the end of this template.\\[1em]
-\textbf{Note 1:} occasionally (for some \LaTeX\ distributions) this hyper-linked bib\TeX\ style may lead to \textbf{compilation errors} (``\texttt{pdfendlink ended up in different nesting level ...}'') if a reference entry is broken across two pages (due to a bug in hyperref). In this case make sure you have the latest version of the hyperref package (i.\,e., update your \LaTeX\ installation/packages) or, alternatively, revert back to ``\texttt{\textbackslash bibliographystyle\{abbrv-doi-narrow\}}'' (at the expense of removing hyperlinks from the bibliography) and try ``\texttt{\textbackslash bibliographystyle\{abbrv-doi-hyperref-narrow\}}'' again after some more editing.\\[1em]
-\textbf{Note 2:} the ``\texttt{-narrow}'' versions of the bibliography style use the font ``PTSansNarrow-TLF'' for typesetting the DOIs in a compact way. This font needs to be available on your \LaTeX\ system. It is part of the \href{https://www.ctan.org/pkg/paratype}{``paratype'' package}, and many distributions (such as MikTeX) have it automatically installed. If you do not have this package yet and want to use a ``\texttt{-narrow}'' bibliography style then use your \LaTeX\ system's package installer to add it. If this is not possible you can also revert to the respective bibliography styles without the ``\texttt{-narrow}'' in the file name.\\[1em]
-DVI-based processes to compile the template apparently cannot handle the different font so, by default, the template file uses the \texttt{abbrv-doi} bibliography style but the compiled PDF shows you the effect of the \texttt{abbrv-doi-hyperref-narrow} style.
-\end{itemize}
+Recent work has begun to show that locomotion technique reshapes spatial behavior beyond navigation efficiency. Connolly et al.~\cite{Connolly:2025:LIV} found that teleport users maintained closer interpersonal distance to virtual agents than natural walkers, and explicitly called for further research into locomotion's broader spatial effects. Voeten~\cite{Voeten:2023:LMS} reported a longitudinal divergence in spatial memory between locomotion conditions, with teleport users improving over repeated sessions while joystick users grew increasingly disoriented. Cherep et al.~\cite{Cherep:2020:STV} showed that teleporting impairs subsequent wayfinding, attributing the deficit to interrupted optic flow. None of these works has examined goal-directed search.
 
-\section{Bibliography Instructions}
-
-\begin{itemize}
-\item Sort all bibliographic entries alphabetically but the last name of the first author. This \LaTeX/bib\TeX\ template takes care of this sorting automatically.
-\item Merge multiple references into one; e.\,g., use \cite{Max:1995:OMF,Kitware:2003} (not \cite{Kitware:2003}\cite{Max:1995:OMF}). Within each set of multiple references, the references should be sorted in ascending order. This \LaTeX/bib\TeX\ template takes care of both the merging and the sorting automatically.
-\item Verify all data obtained from digital libraries, even ACM's DL and IEEE Xplore  etc.\ are sometimes wrong or incomplete.
-\item Do not trust bibliographic data from other services such as Mendeley.com, Google Scholar, or similar; these are even more likely to be incorrect or incomplete.
-\item Articles in journal---items to include:
-  \begin{itemize}
-  \item author names
-	\item title
-	\item journal name
-	\item year
-	\item volume
-	\item number
-	\item month of publication as variable name (i.\,e., \{jan\} for January, etc.; month ranges using \{jan \#\{/\}\# feb\} or \{jan \#\{-{}-\}\# feb\})
-  \end{itemize}
-\item use journal names in proper style: correct: ``IEEE Transactions on Visualization and Computer Graphics'', incorrect: ``Visualization and Computer Graphics, IEEE Transactions on''
-\item Papers in proceedings---items to include:
-  \begin{itemize}
-  \item author names
-	\item title
-	\item abbreviated proceedings name: e.\,g., ``Proc.\textbackslash{} CONF\_ACRONYNM'' without the year; example: ``Proc.\textbackslash{} CHI'', ``Proc.\textbackslash{} 3DUI'', ``Proc.\textbackslash{} Eurographics'', ``Proc.\textbackslash{} EuroVis''
-	\item year
-	\item publisher
-	\item town with country of publisher (the town can be abbreviated for well-known towns such as New York or Berlin)
-  \end{itemize}
-\item article/paper title convention: refrain from using curly brackets, except for acronyms/proper names/words following dashes/question marks etc.; example:
-\begin{itemize}
-	\item paper ``Marching Cubes: A High Resolution 3D Surface Construction Algorithm''
-	\item should be entered as ``\{M\}arching \{C\}ubes: A High Resolution \{3D\} Surface Construction Algorithm'' or  ``\{M\}arching \{C\}ubes: A high resolution \{3D\} surface construction algorithm''
-	\item will be typeset as ``Marching Cubes: A high resolution 3D surface construction algorithm''
-\end{itemize}
-\item for all entries
-\begin{itemize}
-	\item DOI can be entered in the DOI field as plain DOI number or as DOI url; alternative: a url in the URL field
-	\item provide full page ranges AA-{}-BB
-\end{itemize}
-\item when citing references, do not use the reference as a sentence object; e.\,g., wrong: ``In \cite{Lorensen:1987:MCA} the authors describe \dots'', correct: ``Lorensen and Cline \cite{Lorensen:1987:MCA} describe \dots''
-\end{itemize}
-
-\section{Example Section}
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-dolore magna aliquyam erat, sed diam
-voluptua~\cite{Kitware:2003,Max:1995:OMF}. At vero eos et accusam et
-justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-invidunt ut labore et dolore magna aliquyam erat, sed diam
-voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est.
-
-\section{Exposition}
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-vero eros et accumsan et iusto odio dignissim qui blandit praesent
-luptatum zzril delenit augue duis dolore te feugait nulla
-facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-aliquam erat volutpat~\cite{Kindlmann:1999:SAG}.
-
-\begin{equation}
-\sum_{j=1}^{z} j = \frac{z(z+1)}{2}
-\end{equation}
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-takimata sanctus est Lorem ipsum dolor sit amet.
-
-\subsection{Lorem ipsum}
-
-Lorem ipsum dolor sit amet (see \autoref{tab:vis_papers}), consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-invidunt ut labore et dolore magna aliquyam erat, sed diam
-voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. 
-
-\begin{table}[tb]
-  \caption{VIS/VisWeek accepted/presented papers: 1990--2015.}
-  \label{tab:vis_papers}
-  \scriptsize%
-	\centering%
-  \begin{tabu}{%
-	r%
-	*{7}{c}%
-	*{2}{r}%
-	}
-  \toprule
-   year & \rotatebox{90}{Vis/SciVis} &   \rotatebox{90}{SciVis conf} &   \rotatebox{90}{InfoVis} &   \rotatebox{90}{VAST} &   \rotatebox{90}{VAST conf} &   \rotatebox{90}{TVCG @ VIS} &   \rotatebox{90}{CG\&A @ VIS} &   \rotatebox{90}{VIS/VisWeek} \rotatebox{90}{incl. TVCG/CG\&A}   &   \rotatebox{90}{VIS/VisWeek} \rotatebox{90}{w/o TVCG/CG\&A}   \\
-  \midrule
-  2015 & 33 & 9 & 38 & 33 & 14 & 17 & 15 & 159 & 127 \\
-  2014 & 34 &   & 45 & 33 & 21 & 20 &   & 153 & 133 \\
-  2013 & 31 &   & 38 & 32 &   & 20 &   & 121 & 101 \\
-  2012 & 42 &   & 44 & 30 &   & 23 &   & 139 & 116 \\
-  2011 & 49 &   & 44 & 26 &   & 20 &   & 139 & 119 \\
-  2010 & 48 &   & 35 & 26 &   &   &   & 109 & 109 \\
-  2009 & 54 &   & 37 & 26 &   &   &   & 117 & 117 \\
-  2008 & 50 &   & 28 & 21 &   &   &   & 99 & 99 \\
-  2007 & 56 &   & 27 & 24 &   &   &   & 107 & 107 \\
-  2006 & 63 &   & 24 & 26 &   &   &   & 113 & 113 \\
-  2005 & 88 &   & 31 &   &   &   &   & 119 & 119 \\
-  2004 & 70 &   & 27 &   &   &   &   & 97 & 97 \\
-  2003 & 74 &   & 29 &   &   &   &   & 103 & 103 \\
-  2002 & 78 &   & 23 &   &   &   &   & 101 & 101 \\
-  2001 & 74 &   & 22 &   &   &   &   & 96 & 96 \\
-  2000 & 73 &   & 20 &   &   &   &   & 93 & 93 \\
-  1999 & 69 &   & 19 &   &   &   &   & 88 & 88 \\
-  1998 & 72 &   & 18 &   &   &   &   & 90 & 90 \\
-  1997 & 72 &   & 16 &   &   &   &   & 88 & 88 \\
-  1996 & 65 &   & 12 &   &   &   &   & 77 & 77 \\
-  1995 & 56 &   & 18 &   &   &   &   & 74 & 74 \\
-  1994 & 53 &   &   &   &   &   &   & 53 & 53 \\
-  1993 & 55 &   &   &   &   &   &   & 55 & 55 \\
-  1992 & 53 &   &   &   &   &   &   & 53 & 53 \\
-  1991 & 50 &   &   &   &   &   &   & 50 & 50 \\
-  1990 & 53 &   &   &   &   &   &   & 53 & 53 \\
-  \midrule
-  \textbf{sum} & \textbf{1515} & \textbf{9} & \textbf{595} & \textbf{277} & \textbf{35} & \textbf{100} & \textbf{15} & \textbf{2546} & \textbf{2431} \\
-  \bottomrule
-  \end{tabu}%
-\end{table}
-
-\subsection{Mezcal Head}
-
-Lorem ipsum dolor sit amet (see \autoref{fig:sample}), consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-takimata sanctus est Lorem ipsum dolor sit amet. 
-
-\subsubsection{Duis Autem}
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-invidunt ut labore et dolore magna aliquyam erat, sed diam
-voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est. Lorem
-ipsum dolor sit amet.
+We make three contributions. First, we introduce \emph{LocoHunt}, a within-subjects paradigm for measuring spatial search behavior under different locomotion conditions, instrumented with 10\,Hz position logging and a hand-placed coin layout across five spatially separated zones (\autoref{fig:environment}). Second, we define six search-strategy measures that decompose efficiency from coverage, including dwell-time entropy and path tortuosity. Third, we report empirical results from a small-sample exploratory within-subjects study ($N$\,=\,4) showing that point-and-teleport produces faster but less spatially uniform search than continuous joystick locomotion, with implications for the design of search-heavy VR applications.
 
 \begin{figure}[tb]
- \centering % avoid the use of \begin{center}...\end{center} and use \centering instead (more compact)
- \includegraphics[width=\columnwidth]{paper-count-w-2015-new}
- \caption{A visualization of the data from \autoref{tab:vis_papers}. The image is from \cite{Isenberg:2017:VMC} and is in the public domain.}
- \label{fig:sample}
+ \centering
+ \includegraphics[width=\columnwidth]{environment_topdown}
+ \caption{Top-down layout of the LocoHunt museum. Five zones are arranged in a plus-shaped pattern around a central Entry Hall; each zone hosts five hand-placed coins (yellow markers). Zone bounds are 60\,m squares and connect via short corridors. Coins were not visible from outside their host zone, so finding them required active exploration.}
+ \label{fig:environment}
 \end{figure}
 
-\subsubsection{Ejector Seat Reservation}
+\section{Related Work}
 
-Duis autem~\cite{Lorensen:1987:MCA}\footnote{The algorithm behind
-Marching Cubes \cite{Lorensen:1987:MCA} had already been
-described by Wyvill et al. \cite{Wyvill:1986:DSS} a year
-earlier.} vel eum iriure dolor in hendrerit
-in vulputate velit esse molestie consequat,\footnote{Footnotes
-appear at the bottom of the column.} vel illum dolore eu
-feugiat nulla facilisis at vero eros et accumsan et iusto odio
-dignissim qui blandit praesent luptatum zzril delenit augue duis
-dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
-ut laoreet dolore magna aliquam erat volutpat.
+\paragraph{VR locomotion techniques.} The two locomotion techniques compared in this study---continuous joystick translation and point-and-teleport---are stock providers in nearly every modern VR toolkit. Their tradeoffs have been studied along three primary axes: cybersickness, presence, and navigation accuracy. Bozgeyikli et al.~\cite{Bozgeyikli:2016:PTL} found that point-and-teleport caused less simulator sickness than smooth locomotion, but reduced spatial awareness. Coomer et al.~\cite{Coomer:2018:EFL} compared four locomotion methods and showed that teleport induced the lowest sickness scores while compromising spatial knowledge of the environment. Langbehn et al.~\cite{Langbehn:2018:ETN} extended this comparison to natural walking, finding that real walking produced the most accurate spatial reasoning but is impractical for room-scale spaces.
 
+\paragraph{Locomotion and spatial cognition.} A separate line of work examines what locomotion technique does to the user's mental representation of space rather than to their performance on a single task. Cherep et al.~\cite{Cherep:2020:STV} showed that teleporting through a virtual environment impairs subsequent wayfinding, attributing the deficit to the interruption of optic flow that ordinarily supports continuous spatial updating. Voeten~\cite{Voeten:2023:LMS} reported a longitudinal divergence in spatial memory: teleport users improved over repeated sessions while joystick users became increasingly disoriented, suggesting that the two techniques produce qualitatively different cognitive maps. Connolly et al.~\cite{Connolly:2025:LIV} extended the domain to social proxemics, finding that teleport users approached virtual agents more closely than natural walkers.
 
-\paragraph{Confirmed Ejector Seat Reservation}
+\paragraph{Search behavior.} The cognitive psychology of search has been studied for decades in 2D visual search~\cite{Wolfe:2017:FIT}, and the framework of information foraging~\cite{Pirolli:1999:IF} has been applied to navigation in real and virtual environments. Search in immersive 3D environments has received comparatively less attention. To our knowledge no prior work has compared how the choice of VR locomotion technique reshapes search strategy in a goal-directed task. Our contribution lies at the intersection of these three threads: we treat search itself as the dependent variable, and ask how locomotion technique shapes its structure.
 
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-suscipit lobortis nisl ut aliquip ex ea commodo
-consequat~\cite{Nielson:1991:TAD}. Duis autem vel eum iriure dolor in
-hendrerit in vulputate velit esse molestie consequat, vel illum dolore
-eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
-dignissim qui blandit praesent luptatum zzril delenit augue duis
-dolore te feugait nulla facilisi.
+\section{The LocoHunt Paradigm}
+\label{sec:system}
 
-\paragraph{Rejected Ejector Seat Reservation}
+\emph{LocoHunt} is a coin-collection task implemented as a custom VR application for the Meta Quest~3, built in Godot~4.6 with the godot-xr-tools framework over OpenXR. The environment is a virtual museum spanning five spatially separated zones arranged in a plus-shaped layout (\autoref{fig:environment}): an Entry Hall in the center, with Gallery~A to the north, the Courtyard to the south, the Sculpture room to the west, and the Archive to the east. Each zone occupies a 60\,$\times$\,60\,m square and connects to the Entry Hall via short corridors with line-of-sight occluders, so that coins in adjacent zones cannot be seen until the user enters them. Architectural features (columns, exhibits, walls) and animated humanoid NPCs populate each zone to provide visual context.
 
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem
-vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+\paragraph{Coins.} Twenty-five coins are distributed across the museum at hand-placed positions, with five coins per zone. Coins are visually salient---golden cylinders that bob and rotate, lit by an attached point light---but no markers indicate their locations. A heads-up display shows the running count of coins collected and remaining; the session ends automatically when the final coin is collected.
 
+Coins are collected by horizontal proximity: when the player's planar (XZ) distance to a coin falls below 1.2\,m the coin is collected automatically, accompanied by a brief visual pop-and-fade and a HUD notification. We chose proximity-based collection rather than ray pointing or grabbing to keep the dependent measure focused on locomotion and search strategy rather than on aiming skill.
+
+\paragraph{Locomotion conditions.} LocoHunt supports two locomotion conditions, both implemented via the godot-xr-tools standard movement providers:
+
+\begin{itemize}
+\item \emph{Joystick}: continuous translation via the left controller's thumbstick at a fixed 2\,m/s, with snap-turn on the right thumbstick. Optic flow is preserved and the user must physically navigate around all obstacles, including NPCs.
+\item \emph{Teleport}: point-and-teleport via the right controller, where the user aims a parabolic ray and releases the trigger to translate instantaneously to the target. Snap-turn remains available on the left thumbstick. Optic flow is interrupted at each teleport.
+\end{itemize}
+The session manager activates exactly one locomotion provider per session and disables all others, so cross-condition contamination at the input level is impossible.
+
+\paragraph{Logging.} The build samples player position at 10\,Hz and writes (timestamp, $x$, $y$, $z$, current\_zone) to a per-session CSV. Coin collection events and a session-end event are written to a parallel CSV with player and target positions. Files are written to local storage on the headset and exported after each session.
+
+\section{Method}
+
+\subsection{Participants}
+We recruited \textbf{four participants} (\emph{Demographic placeholder: report mean age and SD, gender split, and prior-VR-experience distribution.}) from the university population. Participants gave informed consent before the study began and received \emph{[compensation placeholder]} for their time. The study was conducted as a graduate course project; procedures followed standard ethical guidelines for human-subjects research with VR. We frame this as an exploratory study and discuss the implications of the small sample in \autoref{sec:limitations}.
+
+\subsection{Apparatus and Materials}
+The study was run on a \emph{Meta Quest~3} standalone headset (\emph{[refresh-rate placeholder, e.g.~90\,Hz]}, Touch Plus controllers) running our custom Godot 4.6 build of LocoHunt over OpenXR~1.1.53. The physical setup was a \emph{[room-size placeholder, e.g.~3\,$\times$\,3\,m]} clear area with the Quest's guardian configured for room-scale standing use; participants were tethered only to the controllers. The build is the v7 APK distributed in the project repository.
+
+\subsection{Design}
+A 1-factor within-subjects design was used, with locomotion technique (joystick, teleport) as the single independent variable. Participants were assigned in equal numbers to two technique-order groups: \emph{Group A} performed Session~1 with joystick locomotion and Session~2 with teleport, while \emph{Group B} performed the reverse order. The same coin layout was used in both sessions; we discuss the implications of this design choice in \autoref{sec:limitations}.
+
+\subsection{Procedure}
+After arrival, participants were briefed on the task with the following instructions: ``collect all the coins, in any order, as quickly or as thoroughly as you like.'' They then completed a brief practice scene in which they tried both locomotion techniques in a small training room. After confirming they were comfortable with the controls, they began Session~1 in the locomotion mode assigned by their group. Upon collecting all 25 coins, an in-headset notice instructed them to remove the headset and take a 5-minute rest break. They then donned the headset; pulling the right trigger advanced them to Session~2, where the alternate locomotion technique was active. Session~2 began from a starting orientation rotated 180\,$^\circ$ from Session~1, and the directional lighting shifted slightly in color and angle, providing an environmental cue that the second session had begun. After Session~2 a study-complete notice was shown and the headset was removed.
+
+\subsection{Measures}
+From the 10\,Hz position log and the event log we computed six dependent measures per session:
+
+\begin{enumerate}
+\item \emph{Completion time}: total elapsed seconds from session start to collection of the 25th coin.
+\item \emph{Spatial coverage (\%)}: the proportion of the museum's accessible floor area that was visited. The $(x, z)$ plane was binned into 1\,$\times$\,1\,m cells; coverage was the fraction of accessible cells in which at least one position sample was recorded.
+\item \emph{Zone visitation completeness}: the number of distinct zones (out of five) entered during the session.
+\item \emph{Dwell-time entropy}: the Shannon entropy of the distribution of time spent across the five zones, normalized by $\log 5$. A value of 1 indicates perfectly uniform dwell across zones; lower values indicate concentration in fewer zones.
+\item \emph{Path tortuosity}: the ratio of the total path length (sum of inter-sample distances) to the net displacement (straight-line distance between session start and end). Higher values indicate more circuitous paths.
+\item \emph{Revisit rate}: the number of zone re-entries (transitions returning to a previously visited zone) per minute of session time.
+\end{enumerate}
+
+\noindent Together these capture two dimensions of search: efficiency (1, 5) and the structure of spatial allocation (2, 3, 4, 6).
+
+\subsection{Data Analysis}
+For each of the six dependent measures we computed the mean and standard deviation per condition. To select the appropriate inferential test, we first ran a Shapiro--Wilk normality test on each condition. When both conditions met normality ($p$\,$>$\,.05), we applied a paired t-test; when either condition failed normality, we applied a Wilcoxon signed-rank test. Effect sizes are reported as Cohen's $d$ using a pooled standard deviation:
+\[
+d = \frac{M_1 - M_2}{\sqrt{(SD_1^2 + SD_2^2)/2}}.
+\]
+We adopt the conventional thresholds: $|d|$\,$<$\,0.2 negligible, $\geq$\,0.2 small, $\geq$\,0.5 medium, $\geq$\,0.8 large. The significance level is $\alpha$\,=\,.05. With one within-subjects factor at two levels and each measure analyzed independently, no Bonferroni correction was applied. Analyses were performed in Python with NumPy and SciPy.
+
+\section{Results}
+\label{sec:results}
+
+\autoref{fig:results} and \autoref{tab:results} summarize the six dependent measures across conditions. Shapiro--Wilk tests indicated that completion time, spatial coverage, and revisit rate met normality in both conditions, so paired t-tests were applied; dwell-time entropy and path tortuosity failed normality on at least one condition, so Wilcoxon signed-rank tests were applied; zones visited was at ceiling in both conditions and was not tested.
+
+\paragraph{Completion time.}
+Teleport sessions were substantially shorter than joystick sessions (joystick: $M$\,=\,689.7\,s, $SD$\,=\,92.0; teleport: $M$\,=\,278.4\,s, $SD$\,=\,64.0). The paired t-test was significant, $t(3)$\,=\,5.89, $p$\,=\,.010, with a very large effect size, $d$\,=\,5.19 ($\ast\ast$). Every participant completed the teleport session faster than the joystick session.
+
+\paragraph{Spatial coverage.}
+Joystick sessions covered substantially more floor area than teleport sessions (joystick: $M$\,=\,4.99\,\%, $SD$\,=\,0.71; teleport: $M$\,=\,1.52\,\%, $SD$\,=\,0.60), a 3.3$\times$ ratio. The paired t-test was significant, $t(3)$\,=\,6.14, $p$\,=\,.009, $d$\,=\,5.27 ($\ast\ast$). The pattern reflects the difference between sampling space along a continuous path versus sampling only at discrete landing points.
+
+\paragraph{Revisit rate.}
+Teleport users revisited previously-seen zones at nearly three times the per-minute rate of joystick users (joystick: $M$\,=\,0.36\,/min, $SD$\,=\,0.11; teleport: $M$\,=\,1.01\,/min, $SD$\,=\,0.50). The paired t-test did not reach significance, $t(3)$\,=\,$-$2.33, $p$\,=\,.102, but the effect size was large, $d$\,=\,$-$1.78 (ns). The pattern is consistent with teleport users moving between zones more frequently rather than completing one zone before moving to the next, and we expect this difference to reach significance with a larger sample.
+
+\paragraph{Dwell-time entropy.}
+Normalized dwell-time entropy was near its maximum in both conditions and did not differ meaningfully (joystick: $M$\,=\,0.95, $SD$\,=\,0.03; teleport: $M$\,=\,0.94, $SD$\,=\,0.09; Wilcoxon $W$\,=\,4, $p$\,=\,.875, $d$\,=\,0.23, ns). Both conditions distributed time relatively uniformly across the five zones.
+
+\paragraph{Path tortuosity.}
+Path tortuosity, defined as total path length divided by net start-to-end displacement, did not differ between conditions (joystick: $M$\,=\,21.0, $SD$\,=\,14.3; teleport: $M$\,=\,21.1, $SD$\,=\,9.8; Wilcoxon $W$\,=\,5, $p$\,=\,1.00, $d$\,$\approx$\,0, ns).
+
+\paragraph{Zone visitation completeness.}
+All participants reached all five zones in both conditions ($M$\,=\,5.0 of 5, $SD$\,=\,0). The measure was at ceiling and we retain it only as confirmation that no participant abandoned a region of the environment.
+
+\paragraph{Summary of inferential results.}
+The two strong findings, completion time and spatial coverage, both reached $p$\,$<$\,.01 with very large effect sizes. The revisit rate showed a large effect size in the predicted direction but did not reach significance under our small sample. Dwell-time entropy and path tortuosity were null. The pattern is best summarized as a coverage-versus-cycling tradeoff: teleport delivers fast, narrow, high-revisit search; joystick delivers slower, broader, lower-revisit search.
+
+\begin{table}[tb]
+  \caption{Descriptive and inferential statistics for the six dependent measures across the four participants. Significance markers: $\ast$ = $p$\,$<$\,.05, $\ast\ast$ = $p$\,$<$\,.01, ns = not significant. Tests selected by Shapiro--Wilk normality check on each condition.}
+  \label{tab:results}
+  \scriptsize
+  \centering
+  \begin{tabu}{lrrrrrr}
+    \toprule
+    Measure & Joystick $M$\,($SD$) & Teleport $M$\,($SD$) & Test & Stat (df) & $p$ & $d$ \\
+    \midrule
+    Completion (s)  & 689.7 (92.0) & 278.4 (64.0) & paired $t$ & 5.89 (3) & .010 $\ast\ast$ &  5.19 \\
+    Coverage (\%)   &   4.99 (0.71) &   1.52 (0.60) & paired $t$ & 6.14 (3) & .009 $\ast\ast$ &  5.27 \\
+    Revisit (/min)  &   0.36 (0.11) &   1.01 (0.50) & paired $t$ & $-$2.33 (3) & .102 (ns) & $-$1.78 \\
+    Dwell entropy   &   0.95 (0.03) &   0.94 (0.09) & Wilcoxon   & $W$\,=\,4 & .875 (ns) &  0.23 \\
+    Tortuosity      &  21.0 (14.3) &  21.1 (9.8)  & Wilcoxon   & $W$\,=\,5 & 1.000 (ns) & 0.00 \\
+    Zones visited   &   5.0 (0.0)  &   5.0 (0.0)  & ---        & ---       & ---        & ---  \\
+    \bottomrule
+  \end{tabu}
+\end{table}
+
+\begin{figure}[tb]
+ \centering
+ \includegraphics[width=\columnwidth]{results_bars}
+ \caption{Mean values per condition for each of the six dependent measures, with standard deviation bars. Asterisks denote significance: $\ast\ast$\,=\,$p$\,$<$\,.01. Joystick sessions take significantly longer and cover significantly more floor area; teleport sessions show a marginally higher revisit rate (large effect size, $d$\,=\,$-$1.78, $p$\,=\,.10). Dwell-time entropy and path tortuosity did not differ; zone visitation was at ceiling.}
+ \label{fig:results}
+\end{figure}
+
+\begin{figure}[tb]
+ \centering
+ \includegraphics[width=\columnwidth]{trajectories}
+ \caption{Representative trajectory heatmaps for one participant under each locomotion condition. The joystick trajectory (left) traces a continuous and broadly distributed path through the museum, while the teleport trajectory (right) consists of clustered landing points concentrated in a smaller subset of locations.}
+ \label{fig:trajectories}
+\end{figure}
+
+\section{Discussion}
+
+The data describe a coherent and asymmetric pattern. Teleport locomotion is significantly faster (a 2.5$\times$ ratio in completion time) and yields significantly less spatial coverage (a 3.3$\times$ ratio); the two effects are mirror images and produce very large standardized effect sizes. The revisit rate showed a large effect size in the predicted direction but fell short of significance at our sample size, consistent with the interpretation that teleport users move between zones more readily than they exhaust each zone in turn. Joystick locomotion is slower but produces broader, lower-revisit coverage. This pattern aligns with the optic-flow account proposed by Cherep et al.~\cite{Cherep:2020:STV} and extends Voeten's~\cite{Voeten:2023:LMS} longitudinal observations into the domain of single-session search behavior: continuous translation preserves the perceptual cues that support continuous spatial updating, while teleport decouples translation from this cognitive process.
+
+Two of our six measures---dwell-time entropy and path tortuosity---did not differ between conditions, and the null results are themselves informative. Both groups distributed their time relatively uniformly \emph{across} the five zones (entropy near 1.0), and both moved with similar circuitousness relative to start-to-end displacement. The contrast we observe is therefore not about whether time is distributed across the museum but about \emph{how often} users return to each zone and \emph{how much area within each zone} they cover when they are there. The result is best summarized as a coverage-versus-cycling tradeoff rather than as a uniform-versus-clustered tradeoff.
+
+\paragraph{Implications for VR design.}
+For applications where speed of traversal is the primary concern---rapid navigation between known points, narrative VR with directed paths, intermissions in long experiences---teleportation remains the appropriate default and our results are consistent with existing recommendations~\cite{Bozgeyikli:2016:PTL}. For applications where the user is expected to thoroughly explore a space---training simulators that require hazard discovery, search-and-rescue scenarios, museum walkthroughs designed to expose the user to the full environment---continuous locomotion produces qualitatively different and more uniform spatial coverage. Designers may also consider hybrid schemes that bias users toward exploration in early phases of a task and toward efficient traversal in later phases, or environment cues that signal when thorough coverage matters.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+Several caveats apply to this study. First and most importantly, our \emph{sample size of four} is small. With four paired observations the inferential tests have low statistical power, and we treat the present results as exploratory: the two effects that reached significance ($p$\,$<$\,.01) did so by virtue of effect sizes that were extreme by conventional standards, and the marginal but large effect on revisit rate ($d$\,=\,$-$1.78, $p$\,=\,.10) is best interpreted as suggestive evidence that we expect to be confirmed under replication at larger $N$. Second, \emph{both sessions used the same coin layout}; counterbalancing of technique order distributes carry-over from spatial memory evenly between conditions but does not eliminate it. Future replications should use distinct counterbalanced layouts. Third, the museum is densely populated with animated humanoid NPCs that act as both visual context and physical obstacles. In joystick mode the user must physically navigate around them; in teleport mode the user can jump past them. This may inflate the completion-time difference between conditions and should be considered when generalizing the magnitude of the effect. Fourth, the sample is drawn from a university population skewed toward participants with at least some prior VR experience; novice users in non-academic settings may exhibit different patterns. Fifth, our design did not include subjective measures of presence or simulator sickness; future work could replicate this paradigm with full subjective instrumentation to relate behavioral patterns to felt experience.
 
 \section{Conclusion}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-invidunt ut labore et dolore magna aliquyam erat, sed diam
-voluptua. At vero eos et accusam et justo duo dolores et ea
-rebum.
+We presented LocoHunt, a within-subjects paradigm for measuring goal-directed spatial search behavior in immersive VR, and applied it to a comparison of continuous joystick locomotion and point-and-teleport. Across six measures derived from 10\,Hz position logs we find that teleport produces faster but less spatially uniform search, while joystick produces broader and lower-revisit exploration. Two of three locomotion-sensitive measures reached statistical significance with very large effect sizes; the third showed a marginal large-magnitude effect that we expect to be confirmed under replication. The result indicates that locomotion technique affects not only how fast users complete a search task, but the structure of the spatial behavior with which they do so. We offer LocoHunt as a research artifact for further investigation of locomotion-driven search in immersive environments.
 
-
-%% if specified like this the section will be committed in review mode
 \acknowledgments{
-The authors wish to thank A, B, C. This work was supported in part by
-a grant from XYZ.}
+We thank our course instructor and the participants who took part in this study.}
 
-%\bibliographystyle{abbrv}
 \bibliographystyle{abbrv-doi}
-%\bibliographystyle{abbrv-doi-narrow}
-%\bibliographystyle{abbrv-doi-hyperref}
-%\bibliographystyle{abbrv-doi-hyperref-narrow}
 
 \bibliography{template}
 \end{document}
